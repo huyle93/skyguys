@@ -10,19 +10,18 @@ class App extends Component {
   constructor(){
     super()
     this.state = {
-        project: []
+      projects: []
 
     }
   }
 componentDidMount(){
-  let url = "http://18.219.22.166/wp-json/wp/v2/pages/16"
+  let url = "http://18.219.22.166/wp-json/wp/v2/pages"
   console.log(url)
   fetch(url)
   .then(response => response.json())
   .then(response => {
     this.setState({
-      project: response
-
+      projects: response
     })
   })
 
@@ -32,10 +31,20 @@ componentDidMount(){
 
   render() {
     console.log('I was triggered during render')
+    // Declare a new variable and loop it using map
+    let projects = this.state.projects.map((project, index) => {4
+      // return each index and rendered it at the bottom of the second return
+      return(
+        <div key={index}>
+        <p> {project.content.rendered}</p>
+            </div>
 
+      )
+    })
     return (
       <div className="App">
       <h1>test</h1>
+      {projects}
       </div>
     );
   }
