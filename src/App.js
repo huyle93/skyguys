@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import './App.css';
+import './assets/sass/App.css';
 import { Button } from 'react-bootstrap'
 import registerServiceWorker from './registerServiceWorker'
 
@@ -14,20 +14,17 @@ class App extends Component {
 
     }
   }
-componentDidMount(){
+  componentDidMount() {
   let url = "http://18.219.22.166/wp-json/wp/v2/pages"
   console.log(url)
   fetch(url)
-  .then(response => response.json())
-  .then(response => {
-    this.setState({
-      projects: response
+    .then(response => response.json())
+    .then(response => {
+      this.setState({
+        projects: response
+      })
     })
-  })
-
-
-
-}
+  }
 
   render() {
     console.log('I was triggered during render')
